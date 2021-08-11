@@ -1,4 +1,0 @@
-[warn] insecure HTTP request is deprecated 'http://packages.confluent.io/maven/'; switch to HTTPS or opt-in as ("kafka-connect-avro-converter" at "http://packages.confluent.io/maven/").withAllowInsecureProtocol(true)
-[warn] insecure HTTP request is deprecated 'http://repos.mytaxi.com:8081/artifactory/repo'; switch to HTTPS or opt-in as ("Mytaxi Repo" at "http://repos.mytaxi.com:8081/artifactory/repo").withAllowInsecureProtocol(true)
-[warn] insecure HTTP request is deprecated 'http://repos.mytaxi.com:8081/artifactory/internal'; switch to HTTPS or opt-in as ("Mytaxi Internal Repo" at "http://repos.mytaxi.com:8081/artifactory/internal").withAllowInsecureProtocol(true)
-[warn] insecure HTTP request is deprecated 'http://repos.mytaxi.com:8081/artifactory/snapshots'; switch to HTTPS or opt-in as ("Mytaxi snapshots" at "http://repos.mytaxi.com:8081/artifactory/snapshots").withAllowInsecureProtocol(true)
