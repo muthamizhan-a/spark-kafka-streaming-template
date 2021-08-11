@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10 seconds">
+    <property name="freeNowServiceName" value="{{ cookiecutter.project_slug }}-JOB_NAME-ENVIRONMENT_NAME-DEPLOYMENT_TYPE"/>
+    <property name="serviceName" value="${freeNowServiceName}"/>
+    <property name="mytPattern"
+              value="%date{ISO8601} | %-16thread | %-5level{5} | %-150message | %-35(%logger{0}:%-5L) | %mdc%n%exception{full}"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>UTF-8</charset>
+            <pattern><![CDATA[${mytPattern}}]]></pattern>
+        </encoder>
+    </appender>
+
+    <appender name="LOGSTASHSYNC" class="com.cwbase.logback.RedisAppender">
+        <source>${freeNowServiceName}</source>
+        <sourcePath>${freeNowServiceName}</sourcePath>
+        <type>${ENVIRONMENT_NAME:-local}</type>
+        <tags>${ENVIRONMENT_NAME:-local}</tags>
+        <host>logcache.mgmt.mytaxi.com</host>
+        <port>6379</port>
+        <key>logstash</key>
+        <location>true</location>
+        <mdc>true</mdc>
+    </appender>
+
+    <appender name="LOGSTASH" class="com.mytaxi.logging.ConfigurableAsyncAppender">
+        <appender-ref ref="LOGSTASHSYNC"/>
+        <discardIncludingLogLevel>ERROR</discardIncludingLogLevel>
+    </appender>
+
+    <logger name="com.freenow" level="ERROR"/>
+    <logger name="hive.ql" level="ERROR"/>
+    <logger name="hive.ql.metadata.Hive" level="ERROR"/>
+    <logger name="com.typesafe" level="ERROR"/>
+
+    <root level="ERROR" additivity="false">
+        <!--<appender-ref ref="CONSOLE"/>-->
+        <appender-ref ref="LOGSTASH"/>
+    </root>
+
+</configuration>
