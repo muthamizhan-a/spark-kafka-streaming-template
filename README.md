@@ -1,5 +1,5 @@
 # spark-streaming-template
-### A generic spark structured streaming + kafka streaming library with integration hive.
+### A generic spark structured streaming + kafka streaming utility library with integration hive.
 
 ## code sample
 
