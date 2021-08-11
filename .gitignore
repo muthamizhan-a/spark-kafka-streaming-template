@@ -1,0 +1,15 @@
+.idea
+target
+project/project
+project/target
+.sbt
+.ivy2
+ensime.sbt
+.ensime
+.ensime_cache
+**/.#*
+native
+.metals/
+.bloop/
+project/metals.sbt
+.rebel_readline_history
