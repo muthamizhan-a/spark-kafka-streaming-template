@@ -1,13 +1,9 @@
 package com.sparkstructured.kafka.streaming
 
-import com.spark.streaming.config.StreamingConfig
-import com.spark.streaming.constant.StreamingConstant
 import org.yaml.snakeyaml.Yaml
 import org.yaml.snakeyaml.constructor.Constructor
 
 import scala.io.Source
-import com.spark.streaming.kafka.KafkaContextsHandler
-import com.spark.streaming.spark.SparkContextsHandler
 import com.sparkstructured.kafka.streaming.config.StreamingConfig
 import com.sparkstructured.kafka.streaming.constant.StreamingConstant
 import com.sparkstructured.kafka.streaming.exception.CustomException

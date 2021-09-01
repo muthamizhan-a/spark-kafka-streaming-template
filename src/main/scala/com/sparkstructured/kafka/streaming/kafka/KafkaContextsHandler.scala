@@ -1,9 +1,7 @@
 package com.sparkstructured.kafka.streaming.kafka
-
+import za.co.absa.abris.avro.functions._
 import java.util
 
-import com.spark.streaming.config.KafkaConfig
-import com.spark.streaming.spark.SparkContextsHandler
 import com.sparkstructured.kafka.streaming.config.KafkaConfig
 import com.sparkstructured.kafka.streaming.exception.CustomException
 import com.sparkstructured.kafka.streaming.spark.SparkContextsHandler
@@ -11,6 +9,7 @@ import com.typesafe.scalalogging.LazyLogging
 import org.apache.spark.sql.functions.{col, struct}
 import org.apache.spark.sql.streaming._
 import org.apache.spark.sql.{DataFrame, Row}
+import za.co.absa.abris.avro.read.confluent.SchemaManager
 
 import scala.collection.JavaConverters._
 import scala.collection.mutable.HashMap
