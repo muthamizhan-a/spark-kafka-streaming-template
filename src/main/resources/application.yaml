@@ -1,0 +1,71 @@
+kafka:
+  bootstrapServers: "broker:29092"
+  schemaRegistryUrl: "http://schema-registry:8082"
+  options:
+    - key: "enable.auto.commit"
+      value: true
+
+    - key: "failOnDataLoss"
+      value: false
+
+    - key: "startingOffsets"
+      value: "latest"
+
+    - key: "kafka.security.protocol"
+      value: "SASL_SSL"
+
+    - key: "kafka.sasl.mechanism"
+      value: "PLAIN"
+
+    - key: "kafka.ssl.protocol"
+      value: "TLSv1.2"
+
+    - key: "kafka.ssl.enabled.protocols"
+      value: "TLSv1.2"
+
+    - key: "kafka.ssl.endpoint.identification.algorithm"
+      value: "HTTPS"
+
+sparkStreaming:
+  master: "spark://spark-master:7077"
+  appName: "SparkStreaming"
+  streamingBatchInterval: 600
+  hadoopUser: "hadoop"
+  logLevel: "ERROR"
+  conf:
+
+    - key: "hive.metastore.uris"
+      value: "thrift://ip-10-149-176-139.eu-west-1.compute.internal:9083"
+
+    - key: "spark.streaming.concurrentJobs"
+      value: 10
+
+    - key: "spark.serializer"
+      value: "org.apache.spark.serializer.KryoSerializer"
+
+    - key: "hive.exec.dynamic.partition"
+      value: true
+
+    - key: "hive.exec.dynamic.partition.mode"
+      value: "nonstrict"
+
+    - key: "fs.s3.impl"
+      value: "org.apache.hadoop.fs.s3native.NativeS3FileSystem"
+
+    - key: "fs.s3a.fast.upload"
+      value: true
+
+    - key: "spark.sql.hive.thriftServer.singleSession"
+      value: true
+
+    - key: "spark.eventLog.enabled"
+      value: true
+
+    - key: "spark.hadoop.fs.s3a.impl"
+      value: "org.apache.hadoop.fs.s3a.S3AFileSystem"
+
+    - key: "spark.eventLog.dir"
+      value: "/usr/local/spark-events"
+
+    - key: "spark.history.fs.logDirectory"
+      value: "/usr/local/spark-events"

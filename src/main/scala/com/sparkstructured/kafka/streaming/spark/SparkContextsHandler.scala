@@ -5,6 +5,7 @@ import java.util.Date
 
 import com.sparkstructured.kafka.streaming.config.Conf
 import com.typesafe.scalalogging.LazyLogging
+import org.apache.commons.lang3.StringUtils
 import org.apache.spark.sql._
 import org.apache.spark.sql.streaming.{DataStreamReader, DataStreamWriter}
 import org.apache.spark.sql.types.TimestampType
@@ -116,7 +117,7 @@ class SparkContextsHandler(
             case o                => valueBuilder.append(o + ",")
           }
         )
-        val valueStr = StringUtil.substring(valueBuilder.mkString, 0, -1)
+        val valueStr = StringUtils.substring(valueBuilder.mkString, 0, -1)
         statement.execute(
           "INSERT INTO " + jdbcDatabaseName + "." + resultTable + " (" + rdsColumnOrder + ") VALUES (" + valueStr + ")"
         )

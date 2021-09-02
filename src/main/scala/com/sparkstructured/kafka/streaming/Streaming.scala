@@ -15,10 +15,7 @@ class Streaming(projectName: Option[String] = None, streamingConfigFileName: Opt
   var kafka: KafkaContextsHandler = _
   var spark: SparkContextsHandler = _
 
-  private val configSource = Source.fromURL(
-    s"${StreamingConstant.CONFIG_MGMT_BASE_PATH}${projectName.getOrElse(StreamingConstant.DEFAULT_CONFIG_PROJECT)}/${streamingConfigFileName
-      .getOrElse(StreamingConstant.DEFAULT_CONFIG_FILE)}.yaml"
-  )
+  private val configSource = Source.fromFile(getClass.getResource("/application.yaml").getPath)
   private val streamingConf =
     new Yaml(new Constructor(classOf[StreamingConfig])).load(configSource.mkString).asInstanceOf[StreamingConfig]
 

@@ -34,6 +34,7 @@ lazy val dataProcessingCommon = (project in file("."))
       "org.scala-lang" % "scala-compiler" % scalaVersion.value,
       "org.scala-lang" % "scala-library" % scalaVersion.value,
       "com.typesafe" % "config" % "1.3.4",
+      "ch.qos.logback" % "logback-classic" % "1.1.7",
       "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
       "org.yaml" % "snakeyaml" % "1.25",
       "net.jpountz.lz4" % "lz4" % "1.3.0",
@@ -49,11 +50,13 @@ lazy val dataProcessingCommon = (project in file("."))
       "io.prometheus" % "simpleclient_dropwizard" % "0.8.0",
       "io.prometheus" % "simpleclient_pushgateway" % "0.8.0",
       "io.dropwizard.metrics" % "metrics-core" % "4.1.1",
-      "org.apache.hadoop" % "hadoop-mapreduce-client-core" % "2.7.2"
+      "org.apache.hadoop" % "hadoop-mapreduce-client-core" % "2.7.2",
+      "com.github.pureconfig" %% "pureconfig" % "0.14.0",
+      "org.apache.commons" % "commons-lang3" % "3.11"
     ),
-    libraryDependencies ~= {
-      _.map(_.excludeAll(excludeSlf4j))
-    },
+//    libraryDependencies ~= {
+//      _.map(_.excludeAll(excludeSlf4j))
+//    },
     assemblyOption in assembly ~= {
       _.copy(includeScala = true)
     },

@@ -1,6 +1,13 @@
 # spark-kafka-streaming-template
 ### A generic spark structured streaming + kafka streaming utility library with integration hive.
 
+## Run locally
+
+### start docker containers
+cd docker-local-setup
+
+
+
 ## code sample
 
 ```
